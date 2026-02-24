@@ -1,0 +1,94 @@
+I0224 14:01:52.983259 22982585529344 main.py:62] loading llm model facebook/opt-125m
+/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/tokenization_utils_base.py:1617: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be deprecated in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+I0224 14:01:54.758446 22982585529344 main.py:74] Process 0 uses device cuda:0
+I0224 14:01:54.758686 22982585529344 main.py:77] pruning starts
+I0224 14:01:54.774162 22982585529344 prune.py:113] --- Starting Global Pruning via ADMM Training  ---
+I0224 14:01:54.774400 22982585529344 prune.py:123] Preparing dataset for ADMM training...
+I0224 14:01:54.775305 22982585529344 data.py:128] No valid processed cache found. Generating dataset...
+I0224 14:01:54.775472 22982585529344 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4: 100%|██████████| 32768/32768 [33:35<00:00, 16.26it/s]
+Generating samples: 100%|██████████| 32768/32768 [00:05<00:00, 6480.46it/s]
+I0224 14:36:00.277209 22982585529344 data.py:128] No valid processed cache found. Generating dataset...
+I0224 14:36:00.277839 22982585529344 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4: 100%|██████████| 4/4 [00:00<00:00, 49.63it/s]
+Generating samples: 100%|██████████| 4/4 [00:00<00:00, 8220.10it/s]
+I0224 14:36:02.288172 22982585529344 prune.py:155] ADMM Datasets prepared: Train size 32768, Valid size 4
+I0224 14:36:02.288871 22982585529344 prune.py:160] Initializing ADMMTrainer...
+W0224 14:36:02.308964 22982585529344 other.py:441] Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+max_steps is given, it will override any value given in num_train_epochs
+I0224 14:36:02.311772 22982585529344 prune.py:173] Starting ADMM training on all processes...
+I0224 14:36:02.507599 22982585529344 trainer.py:372] Found 72 / 196 parameters for ADMM.
+I0224 14:36:02.507929 22982585529344 trainer.py:385] Using base optimizer: Adam
+I0224 14:36:02.508301 22982585529344 trainer.py:408] Created ADMMOptimizer optimizer targeting 72 Linear weight tensors.
+I0224 14:36:02.508468 22982585529344 trainer.py:421] ADMM optimizer and scheduler created (scheduler targets base optimizer).
+[2026-02-24 14:36:02,592] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+I0224 14:36:02.897606 22982585529344 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -c /tmp/tmpw3ahbw23/test.c -o /tmp/tmpw3ahbw23/test.o
+I0224 14:36:02.915878 22982585529344 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat /tmp/tmpw3ahbw23/test.o -laio -o /tmp/tmpw3ahbw23/a.out
+I0224 14:36:03.324227 22982585529344 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -c /tmp/tmpt6w0e1sr/test.c -o /tmp/tmpt6w0e1sr/test.o
+I0224 14:36:03.341638 22982585529344 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat /tmp/tmpt6w0e1sr/test.o -L/usr/local/cuda -L/usr/local/cuda/lib64 -lcufile -o /tmp/tmpt6w0e1sr/a.out
+[2026-02-24 14:36:04,392] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+I0224 14:36:05.495685 22982585529344 trainer.py:1118] ***** Running ADMM Training *****
+I0224 14:36:05.495933 22982585529344 trainer.py:1119]   Num examples = 32768
+I0224 14:36:05.496027 22982585529344 trainer.py:1121]   ADMM Steps = 4096
+I0224 14:36:05.496095 22982585529344 trainer.py:1122]   Num Epochs = 1
+I0224 14:36:05.496159 22982585529344 trainer.py:1123]   Instantaneous batch size per device = 4
+I0224 14:36:05.496223 22982585529344 trainer.py:1124]   Total train batch size (w. parallel, distributed & accumulation) = 8
+I0224 14:36:05.496284 22982585529344 trainer.py:1125]   Gradient Accumulation steps = 2
+I0224 14:36:05.496344 22982585529344 trainer.py:1126]   Gradient Checkpointing = False
+I0224 14:36:05.496402 22982585529344 trainer.py:1127]   Total optimization steps = 4096
+I0224 14:36:05.496468 22982585529344 trainer.py:1128]   ADMM Optimizer Args: lmda=0.01, interval=32, sparsity=0.5, weight_decay=0.0
+I0224 14:36:05.497018 22982585529344 trainer.py:1129]   ADMM Penalty Scheduler = constant
+wandb: WARNING The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|          | 0/4096 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/doyoonkim/elsa/main.py", line 191, in <module>
+    app.run(main)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 316, in run
+    _run_main(main, args)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 261, in _run_main
+    sys.exit(main(argv))
+  File "/home/doyoonkim/elsa/main.py", line 78, in main
+    globalprune_admm(FLAGS, model, tokenizer, device, prune_n=prune_n, prune_m=prune_m)
+  File "/home/doyoonkim/elsa/lib/prune.py", line 174, in globalprune_admm
+    trainer.train()
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/doyoonkim/elsa/lib/trainer.py", line 1256, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 3485, in training_step
+    loss = self.compute_loss(model, inputs)
+  File "/home/doyoonkim/elsa/lib/trainer.py", line 944, in compute_loss
+    return super().compute_loss(model, inputs, return_outputs=return_outputs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 3532, in compute_loss
+    outputs = model(**inputs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/accelerate/utils/operations.py", line 818, in forward
+    return model_forward(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/accelerate/utils/operations.py", line 806, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/opt/modeling_opt.py", line 1012, in forward
+    outputs = self.model.decoder(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/opt/modeling_opt.py", line 778, in forward
+    layer_outputs = decoder_layer(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/opt/modeling_opt.py", line 419, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/opt/modeling_opt.py", line 191, in forward
+    attn_weights = attn_weights.view(bsz, self.num_heads, tgt_len, src_len) + attention_mask
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacity of 23.69 GiB of which 6.94 MiB is free. Including non-PyTorch memory, this process has 23.68 GiB memory in use. Of the allocated memory 21.98 GiB is allocated by PyTorch, and 556.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

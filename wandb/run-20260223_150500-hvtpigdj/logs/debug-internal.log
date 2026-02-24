@@ -1,0 +1,7 @@
+{"time":"2026-02-23T15:05:00.826283098+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/doyoonkim/elsa/wandb/run-20260223_150500-hvtpigdj/logs/debug-core.log"}
+{"time":"2026-02-23T15:05:01.193967872+09:00","level":"INFO","msg":"created new stream","id":"hvtpigdj"}
+{"time":"2026-02-23T15:05:01.193996184+09:00","level":"INFO","msg":"stream: started","id":"hvtpigdj"}
+{"time":"2026-02-23T15:05:01.194005223+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"hvtpigdj"}
+{"time":"2026-02-23T15:05:01.194301578+09:00","level":"INFO","msg":"sender: started","stream_id":"hvtpigdj"}
+{"time":"2026-02-23T15:05:01.194323119+09:00","level":"INFO","msg":"handler: started","stream_id":"hvtpigdj"}
+{"time":"2026-02-23T15:05:01.672905027+09:00","level":"INFO","msg":"Starting system monitor"}

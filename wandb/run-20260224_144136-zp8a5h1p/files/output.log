@@ -1,0 +1,10 @@
+I0224 14:41:37.544815 23193425835008 main.py:62] loading llm model facebook/opt-125m
+/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/tokenization_utils_base.py:1617: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be deprecated in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+I0224 14:41:39.317941 23193425835008 main.py:74] Process 0 uses device cuda:0
+I0224 14:41:39.318452 23193425835008 main.py:77] pruning starts
+I0224 14:41:39.332810 23193425835008 prune.py:113] --- Starting Global Pruning via ADMM Training  ---
+I0224 14:41:39.332975 23193425835008 prune.py:123] Preparing dataset for ADMM training...
+I0224 14:41:39.333693 23193425835008 data.py:128] No valid processed cache found. Generating dataset...
+I0224 14:41:39.334053 23193425835008 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4:  49%|████▊     | 15969/32768 [16:27<17:19, 16.17it/s]

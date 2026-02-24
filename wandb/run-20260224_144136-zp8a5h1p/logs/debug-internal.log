@@ -1,0 +1,7 @@
+{"time":"2026-02-24T14:41:36.460005808+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/doyoonkim/elsa/wandb/run-20260224_144136-zp8a5h1p/logs/debug-core.log"}
+{"time":"2026-02-24T14:41:36.789021631+09:00","level":"INFO","msg":"created new stream","id":"zp8a5h1p"}
+{"time":"2026-02-24T14:41:36.789046478+09:00","level":"INFO","msg":"stream: started","id":"zp8a5h1p"}
+{"time":"2026-02-24T14:41:36.789218072+09:00","level":"INFO","msg":"handler: started","stream_id":"zp8a5h1p"}
+{"time":"2026-02-24T14:41:36.789235101+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"zp8a5h1p"}
+{"time":"2026-02-24T14:41:36.78939209+09:00","level":"INFO","msg":"sender: started","stream_id":"zp8a5h1p"}
+{"time":"2026-02-24T14:41:37.243001198+09:00","level":"INFO","msg":"Starting system monitor"}

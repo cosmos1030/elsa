@@ -1,0 +1,142 @@
+I0223 22:49:51.668582 23064785531904 main.py:59] loading llm model meta-llama/Llama-2-7b-hf
+Loading checkpoint shards: 100%|██████████| 2/2 [00:07<00:00,  3.84s/it]
+I0223 22:50:00.322766 23064785531904 main.py:71] Process 0 uses device cuda:0
+I0223 22:50:00.322999 23064785531904 main.py:74] pruning starts
+I0223 22:50:00.373885 23064785531904 prune.py:113] --- Starting Global Pruning via ADMM Training  ---
+I0223 22:50:00.374084 23064785531904 prune.py:119] Tokenizer pad_token not set. Using eos_token as pad_token.
+I0223 22:50:00.374174 23064785531904 prune.py:123] Preparing dataset for ADMM training...
+I0223 22:50:00.374320 23064785531904 data.py:128] No valid processed cache found. Generating dataset...
+I0223 22:50:00.374400 23064785531904 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4: 100%|██████████| 131072/131072 [2:38:49<00:00, 13.75it/s]  
+Generating samples: 100%|██████████| 131072/131072 [00:31<00:00, 4204.46it/s]
+I0224 01:30:50.067890 23064785531904 data.py:128] No valid processed cache found. Generating dataset...
+I0224 01:30:50.068603 23064785531904 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4: 100%|██████████| 4/4 [00:00<00:00, 50.15it/s]
+Generating samples: 100%|██████████| 4/4 [00:00<00:00, 8679.37it/s]
+I0224 01:30:53.220817 23064785531904 prune.py:155] ADMM Datasets prepared: Train size 131072, Valid size 4
+I0224 01:30:53.222376 23064785531904 prune.py:160] Initializing ADMMTrainer...
+W0224 01:30:53.228406 23064785531904 other.py:441] Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+max_steps is given, it will override any value given in num_train_epochs
+I0224 01:30:53.231244 23064785531904 prune.py:173] Starting ADMM training on all processes...
+I0224 01:30:53.409760 23064785531904 trainer.py:372] Found 224 / 291 parameters for ADMM.
+I0224 01:30:53.410104 23064785531904 trainer.py:385] Using base optimizer: Adam
+I0224 01:30:53.410566 23064785531904 trainer.py:408] Created ADMMOptimizer optimizer targeting 224 Linear weight tensors.
+I0224 01:30:53.410744 23064785531904 trainer.py:421] ADMM optimizer and scheduler created (scheduler targets base optimizer).
+[2026-02-24 01:30:53,457] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+I0224 01:30:53.554600 23064785531904 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -c /tmp/tmpmgalmim7/test.c -o /tmp/tmpmgalmim7/test.o
+I0224 01:30:53.570097 23064785531904 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat /tmp/tmpmgalmim7/test.o -laio -o /tmp/tmpmgalmim7/a.out
+I0224 01:30:53.931560 23064785531904 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -c /tmp/tmp6anxcm_t/test.c -o /tmp/tmp6anxcm_t/test.o
+I0224 01:30:53.946873 23064785531904 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat /tmp/tmp6anxcm_t/test.o -L/usr/local/cuda -L/usr/local/cuda/lib64 -lcufile -o /tmp/tmp6anxcm_t/a.out
+[2026-02-24 01:30:54,335] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+I0224 01:31:07.414590 23064785531904 trainer.py:1118] ***** Running ADMM Training *****
+I0224 01:31:07.414871 23064785531904 trainer.py:1119]   Num examples = 131072
+I0224 01:31:07.414967 23064785531904 trainer.py:1121]   ADMM Steps = 4096
+I0224 01:31:07.415033 23064785531904 trainer.py:1122]   Num Epochs = 1
+I0224 01:31:07.415091 23064785531904 trainer.py:1123]   Instantaneous batch size per device = 2
+I0224 01:31:07.415149 23064785531904 trainer.py:1124]   Total train batch size (w. parallel, distributed & accumulation) = 32
+I0224 01:31:07.415206 23064785531904 trainer.py:1125]   Gradient Accumulation steps = 4
+I0224 01:31:07.415264 23064785531904 trainer.py:1126]   Gradient Checkpointing = False
+I0224 01:31:07.415320 23064785531904 trainer.py:1127]   Total optimization steps = 4096
+I0224 01:31:07.415381 23064785531904 trainer.py:1128]   ADMM Optimizer Args: lmda=0.01, interval=32, sparsity=0.5, weight_decay=0.0
+I0224 01:31:07.415438 23064785531904 trainer.py:1129]   ADMM Penalty Scheduler = constant
+wandb: WARNING The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|          | 0/4096 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/doyoonkim/elsa/main.py", line 188, in <module>
+    app.run(main)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 316, in run
+    _run_main(main, args)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 261, in _run_main
+    sys.exit(main(argv))
+  File "/home/doyoonkim/elsa/main.py", line 75, in main
+    globalprune_admm(FLAGS, model, tokenizer, device, prune_n=prune_n, prune_m=prune_m)
+  File "/home/doyoonkim/elsa/lib/prune.py", line 174, in globalprune_admm
+    trainer.train()
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/doyoonkim/elsa/lib/trainer.py", line 1338, in _inner_training_loop
+    self.optimizer.step()
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/accelerate/optimizer.py", line 179, in step
+    self.optimizer.step(closure)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/optim/lr_scheduler.py", line 124, in wrapper
+    return func.__get__(opt, opt.__class__)(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/optim/optimizer.py", line 485, in wrapper
+    out = func(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/doyoonkim/elsa/lib/optimizers.py", line 401, in step
+    self._proximal_update()
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/doyoonkim/elsa/lib/optimizers.py", line 227, in _proximal_update
+    self._lazy_init_admm_state(w, g)
+  File "/home/doyoonkim/elsa/lib/optimizers.py", line 185, in _lazy_init_admm_state
+    z0 = self.projection([p.detach()], st["sparsity"], self.prune_n, self.prune_m,
+  File "/home/doyoonkim/elsa/lib/utils.py", line 155, in projection
+    dense_w = _as_dense_a(weight)
+  File "/home/doyoonkim/elsa/lib/utils.py", line 49, in _as_dense_a
+    return a.redistribute(placements=[Replicate()]).to_local()
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/_api.py", line 542, in redistribute
+    return Redistribute.apply(self, device_mesh, placements, async_op)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/_redistribute.py", line 306, in forward
+    output = redistribute_local_tensor(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/_redistribute.py", line 213, in redistribute_local_tensor
+    new_local_tensor = current_placement._to_replicate_tensor(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/placement_types.py", line 260, in _to_replicate_tensor
+    result = funcol.all_gather_tensor(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/_functional_collectives.py", line 205, in all_gather_tensor
+    tensor = torch.ops._c10d_functional.all_gather_into_tensor(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/_ops.py", line 1158, in __call__
+    return self._op(*args, **(kwargs or {}))
+RuntimeError: Backend nccl does not support allgather_into_tensor_coalesced
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/doyoonkim/elsa/main.py", line 188, in <module>
+[rank0]:     app.run(main)
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 316, in run
+[rank0]:     _run_main(main, args)
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 261, in _run_main
+[rank0]:     sys.exit(main(argv))
+[rank0]:   File "/home/doyoonkim/elsa/main.py", line 75, in main
+[rank0]:     globalprune_admm(FLAGS, model, tokenizer, device, prune_n=prune_n, prune_m=prune_m)
+[rank0]:   File "/home/doyoonkim/elsa/lib/prune.py", line 174, in globalprune_admm
+[rank0]:     trainer.train()
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/home/doyoonkim/elsa/lib/trainer.py", line 1338, in _inner_training_loop
+[rank0]:     self.optimizer.step()
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/accelerate/optimizer.py", line 179, in step
+[rank0]:     self.optimizer.step(closure)
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/optim/lr_scheduler.py", line 124, in wrapper
+[rank0]:     return func.__get__(opt, opt.__class__)(*args, **kwargs)
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/optim/optimizer.py", line 485, in wrapper
+[rank0]:     out = func(*args, **kwargs)
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/home/doyoonkim/elsa/lib/optimizers.py", line 401, in step
+[rank0]:     self._proximal_update()
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/home/doyoonkim/elsa/lib/optimizers.py", line 227, in _proximal_update
+[rank0]:     self._lazy_init_admm_state(w, g)
+[rank0]:   File "/home/doyoonkim/elsa/lib/optimizers.py", line 185, in _lazy_init_admm_state
+[rank0]:     z0 = self.projection([p.detach()], st["sparsity"], self.prune_n, self.prune_m,
+[rank0]:   File "/home/doyoonkim/elsa/lib/utils.py", line 155, in projection
+[rank0]:     dense_w = _as_dense_a(weight)
+[rank0]:   File "/home/doyoonkim/elsa/lib/utils.py", line 49, in _as_dense_a
+[rank0]:     return a.redistribute(placements=[Replicate()]).to_local()
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/_api.py", line 542, in redistribute
+[rank0]:     return Redistribute.apply(self, device_mesh, placements, async_op)
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/autograd/function.py", line 575, in apply
+[rank0]:     return super().apply(*args, **kwargs)  # type: ignore[misc]
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/_redistribute.py", line 306, in forward
+[rank0]:     output = redistribute_local_tensor(
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/_redistribute.py", line 213, in redistribute_local_tensor
+[rank0]:     new_local_tensor = current_placement._to_replicate_tensor(
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/tensor/placement_types.py", line 260, in _to_replicate_tensor
+[rank0]:     result = funcol.all_gather_tensor(
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/distributed/_functional_collectives.py", line 205, in all_gather_tensor
+[rank0]:     tensor = torch.ops._c10d_functional.all_gather_into_tensor(
+[rank0]:   File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/_ops.py", line 1158, in __call__
+[rank0]:     return self._op(*args, **(kwargs or {}))
+[rank0]: RuntimeError: Backend nccl does not support allgather_into_tensor_coalesced

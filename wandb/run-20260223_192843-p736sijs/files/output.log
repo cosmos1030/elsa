@@ -1,0 +1,10 @@
+I0223 19:28:44.848126 23198414627840 main.py:59] loading llm model meta-llama/Llama-2-7b-hf
+Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.09s/it]
+I0223 19:28:52.030440 23198414627840 main.py:71] Process 0 uses device cuda:0
+I0223 19:28:52.030765 23198414627840 main.py:74] pruning starts
+I0223 19:28:52.083521 23198414627840 prune.py:113] --- Starting Global Pruning via ADMM Training  ---
+I0223 19:28:52.083817 23198414627840 prune.py:119] Tokenizer pad_token not set. Using eos_token as pad_token.
+I0223 19:28:52.083923 23198414627840 prune.py:123] Preparing dataset for ADMM training...
+I0223 19:28:52.084109 23198414627840 data.py:128] No valid processed cache found. Generating dataset...
+I0223 19:28:52.084194 23198414627840 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4:  98%|█████████▊| 128963/131072 [2:32:57<02:22, 14.78it/s]  

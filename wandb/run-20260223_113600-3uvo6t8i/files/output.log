@@ -1,0 +1,104 @@
+I0223 11:36:02.052978 22900580336640 main.py:59] loading llm model meta-llama/Llama-2-7b-hf
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.20it/s]
+I0223 11:36:04.850988 22900580336640 main.py:71] Process 0 uses device cuda:0
+I0223 11:36:04.851242 22900580336640 main.py:74] pruning starts
+I0223 11:36:04.884329 22900580336640 prune.py:113] --- Starting Global Pruning via ADMM Training  ---
+I0223 11:36:04.884541 22900580336640 prune.py:119] Tokenizer pad_token not set. Using eos_token as pad_token.
+I0223 11:36:04.884633 22900580336640 prune.py:123] Preparing dataset for ADMM training...
+I0223 11:36:04.885417 22900580336640 data.py:128] No valid processed cache found. Generating dataset...
+I0223 11:36:04.885524 22900580336640 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Tokenizing C4: 100%|██████████| 32768/32768 [35:11<00:00, 15.52it/s] 
+Generating samples: 100%|██████████| 32768/32768 [00:05<00:00, 5612.40it/s]
+I0223 12:11:48.360703 22900580336640 data.py:128] No valid processed cache found. Generating dataset...
+I0223 12:11:48.361262 22900580336640 data.py:38] Loading C4 raw data from Hugging Face Hub.
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+W0223 12:11:51.809618 22900580336640 file_download.py:1717] Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Generating validation split: 45576 examples [00:00, 58772.71 examples/s]
+Tokenizing C4: 100%|██████████| 4/4 [00:00<00:00, 38.85it/s]
+Generating samples: 100%|██████████| 4/4 [00:00<00:00, 9968.64it/s]
+I0223 12:11:56.456791 22900580336640 prune.py:155] ADMM Datasets prepared: Train size 32768, Valid size 4
+I0223 12:11:56.458728 22900580336640 prune.py:160] Initializing ADMMTrainer...
+W0223 12:11:56.486231 22900580336640 other.py:441] Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+max_steps is given, it will override any value given in num_train_epochs
+I0223 12:11:56.489870 22900580336640 prune.py:173] Starting ADMM training on all processes...
+I0223 12:11:56.716142 22900580336640 trainer.py:372] Found 224 / 291 parameters for ADMM.
+I0223 12:11:56.716537 22900580336640 trainer.py:385] Using base optimizer: Adam
+I0223 12:11:56.717389 22900580336640 trainer.py:408] Created ADMMOptimizer optimizer targeting 224 Linear weight tensors.
+I0223 12:11:56.717768 22900580336640 trainer.py:421] ADMM optimizer and scheduler created (scheduler targets base optimizer).
+[2026-02-23 12:11:56,965] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/doyoonkim/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+I0223 12:11:58.015741 22900580336640 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -c /tmp/tmpic9l9fxs/test.c -o /tmp/tmpic9l9fxs/test.o
+I0223 12:11:58.035625 22900580336640 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat /tmp/tmpic9l9fxs/test.o -laio -o /tmp/tmpic9l9fxs/a.out
+I0223 12:11:58.522914 22900580336640 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -O2 -isystem /home/doyoonkim/.conda/envs/elsa/include -fPIC -c /tmp/tmpdmez56g6/test.c -o /tmp/tmpdmez56g6/test.o
+I0223 12:11:58.539750 22900580336640 spawn.py:77] gcc -pthread -B /home/doyoonkim/.conda/envs/elsa/compiler_compat /tmp/tmpdmez56g6/test.o -L/usr/local/cuda -L/usr/local/cuda/lib64 -lcufile -o /tmp/tmpdmez56g6/a.out
+[2026-02-23 12:12:00,342] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+I0223 12:12:03.726295 22900580336640 trainer.py:1118] ***** Running ADMM Training *****
+I0223 12:12:03.726916 22900580336640 trainer.py:1119]   Num examples = 32768
+I0223 12:12:03.727030 22900580336640 trainer.py:1121]   ADMM Steps = 4096
+I0223 12:12:03.727108 22900580336640 trainer.py:1122]   Num Epochs = 1
+I0223 12:12:03.727179 22900580336640 trainer.py:1123]   Instantaneous batch size per device = 2
+I0223 12:12:03.846012 22900580336640 trainer.py:1124]   Total train batch size (w. parallel, distributed & accumulation) = 8
+I0223 12:12:03.846237 22900580336640 trainer.py:1125]   Gradient Accumulation steps = 4
+I0223 12:12:03.846324 22900580336640 trainer.py:1126]   Gradient Checkpointing = False
+I0223 12:12:03.846393 22900580336640 trainer.py:1127]   Total optimization steps = 4096
+I0223 12:12:03.846474 22900580336640 trainer.py:1128]   ADMM Optimizer Args: lmda=0.01, interval=32, sparsity=0.5, weight_decay=0.0
+I0223 12:12:03.846543 22900580336640 trainer.py:1129]   ADMM Penalty Scheduler = constant
+wandb: WARNING The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+  0%|          | 0/4096 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/doyoonkim/elsa/main.py", line 188, in <module>
+    app.run(main)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 316, in run
+    _run_main(main, args)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/absl/app.py", line 261, in _run_main
+    sys.exit(main(argv))
+  File "/home/doyoonkim/elsa/main.py", line 75, in main
+    globalprune_admm(FLAGS, model, tokenizer, device, prune_n=prune_n, prune_m=prune_m)
+  File "/home/doyoonkim/elsa/lib/prune.py", line 174, in globalprune_admm
+    trainer.train()
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/doyoonkim/elsa/lib/trainer.py", line 1256, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 3485, in training_step
+    loss = self.compute_loss(model, inputs)
+  File "/home/doyoonkim/elsa/lib/trainer.py", line 944, in compute_loss
+    return super().compute_loss(model, inputs, return_outputs=return_outputs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/trainer.py", line 3532, in compute_loss
+    outputs = model(**inputs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/accelerate/utils/operations.py", line 818, in forward
+    return model_forward(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/accelerate/utils/operations.py", line 806, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 1189, in forward
+    outputs = self.model(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 1000, in forward
+    layer_outputs = decoder_layer(
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 745, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 311, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/doyoonkim/.conda/envs/elsa/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 86.00 MiB. GPU 0 has a total capacity of 79.25 GiB of which 13.94 MiB is free. Including non-PyTorch memory, this process has 79.23 GiB memory in use. Of the allocated memory 78.38 GiB is allocated by PyTorch, and 353.35 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

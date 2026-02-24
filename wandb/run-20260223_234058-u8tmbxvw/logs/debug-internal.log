@@ -1,0 +1,15 @@
+{"time":"2026-02-23T23:40:58.135880131+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/doyoonkim/elsa/wandb/run-20260223_234058-u8tmbxvw/logs/debug-core.log"}
+{"time":"2026-02-23T23:40:58.470607663+09:00","level":"INFO","msg":"created new stream","id":"u8tmbxvw"}
+{"time":"2026-02-23T23:40:58.470631043+09:00","level":"INFO","msg":"stream: started","id":"u8tmbxvw"}
+{"time":"2026-02-23T23:40:58.471315565+09:00","level":"INFO","msg":"handler: started","stream_id":"u8tmbxvw"}
+{"time":"2026-02-23T23:40:58.471337441+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"u8tmbxvw"}
+{"time":"2026-02-23T23:40:58.471442261+09:00","level":"INFO","msg":"sender: started","stream_id":"u8tmbxvw"}
+{"time":"2026-02-23T23:40:58.875973178+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-02-24T02:49:33.440732804+09:00","level":"INFO","msg":"stream: closing","id":"u8tmbxvw"}
+{"time":"2026-02-24T02:49:33.440838318+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-02-24T02:49:33.441112066+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-02-24T02:49:38.445492977+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-02-24T02:49:38.846952755+09:00","level":"INFO","msg":"handler: closed","stream_id":"u8tmbxvw"}
+{"time":"2026-02-24T02:49:38.846974003+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"u8tmbxvw"}
+{"time":"2026-02-24T02:49:38.847199149+09:00","level":"INFO","msg":"sender: closed","stream_id":"u8tmbxvw"}
+{"time":"2026-02-24T02:49:38.850648533+09:00","level":"INFO","msg":"stream: closed","id":"u8tmbxvw"}

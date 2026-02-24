@@ -1,0 +1,6 @@
+SLURM_SUBMIT_DIR=/home/doyoonkim/elsa
+CUDA_HOME=
+CUDA_VISIBLE_DEVICES=0
+CUDA_VERSION=
+conda command executing
+slurmstepd: error: *** JOB 12089 ON log-node04 CANCELLED AT 2026-02-23T11:35:27 ***

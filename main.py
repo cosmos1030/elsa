@@ -30,7 +30,10 @@ def main(argv):
         dist.init_process_group(backend='nccl')
 
     if FLAGS.wandb and local_rank == 0:
-        wandb.init(project=FLAGS.wandb_project)
+        wandb.init(
+            project=FLAGS.wandb_project,
+            name=f"{FLAGS.model}_sparsity{FLAGS.sparsity_ratio}_admm_steps{FLAGS.admm_steps}_batch{FLAGS.admm_batch_size}_lr{FLAGS.admm_lr}"
+        )
 
         if not dict(wandb.config):
             wandb.config.update(arguments)

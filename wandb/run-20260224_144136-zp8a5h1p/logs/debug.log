@@ -1,0 +1,23 @@
+2026-02-24 14:41:36,445 INFO    MainThread:163335 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2026-02-24 14:41:36,445 INFO    MainThread:163335 [wandb_setup.py:_flush():70] Configure stats pid to 163335
+2026-02-24 14:41:36,445 INFO    MainThread:163335 [wandb_setup.py:_flush():70] Loading settings from /home/doyoonkim/.config/wandb/settings
+2026-02-24 14:41:36,445 INFO    MainThread:163335 [wandb_setup.py:_flush():70] Loading settings from /home/doyoonkim/elsa/wandb/settings
+2026-02-24 14:41:36,445 INFO    MainThread:163335 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2026-02-24 14:41:36,446 INFO    MainThread:163335 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /home/doyoonkim/elsa/wandb/run-20260224_144136-zp8a5h1p/logs/debug.log
+2026-02-24 14:41:36,446 INFO    MainThread:163335 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /home/doyoonkim/elsa/wandb/run-20260224_144136-zp8a5h1p/logs/debug-internal.log
+2026-02-24 14:41:36,446 INFO    MainThread:163335 [wandb_init.py:init():852] calling init triggers
+2026-02-24 14:41:36,446 INFO    MainThread:163335 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2026-02-24 14:41:36,446 INFO    MainThread:163335 [wandb_init.py:init():893] starting backend
+2026-02-24 14:41:36,446 INFO    MainThread:163335 [wandb_init.py:init():897] sending inform_init request
+2026-02-24 14:41:36,454 INFO    MainThread:163335 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2026-02-24 14:41:36,454 INFO    MainThread:163335 [wandb_init.py:init():907] backend started and connected
+2026-02-24 14:41:36,457 INFO    MainThread:163335 [wandb_init.py:init():1005] updated telemetry
+2026-02-24 14:41:36,488 INFO    MainThread:163335 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2026-02-24 14:41:37,240 INFO    MainThread:163335 [wandb_init.py:init():1104] starting run threads in backend
+2026-02-24 14:41:37,536 INFO    MainThread:163335 [wandb_run.py:_console_start():2573] atexit reg
+2026-02-24 14:41:37,536 INFO    MainThread:163335 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2026-02-24 14:41:37,536 INFO    MainThread:163335 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2026-02-24 14:41:37,536 INFO    MainThread:163335 [wandb_run.py:_redirect():2513] Redirects installed.
+2026-02-24 14:41:37,540 INFO    MainThread:163335 [wandb_init.py:init():1150] run started, returning control to user process
+2026-02-24 14:41:37,541 INFO    MainThread:163335 [wandb_run.py:_config_callback():1436] config_cb None None {'logtostderr': False, 'alsologtostderr': False, 'log_dir': '', 'v': 0, 'verbosity': 0, 'logger_levels': {}, 'stderrthreshold': 'fatal', 'showprefixforinfo': True, 'run_with_pdb': False, 'pdb_post_mortem': False, 'pdb': False, 'run_with_profiling': False, 'profile_file': None, 'use_cprofile_for_profiling': True, 'only_check_args': False, 'model': 'facebook/opt-125m', 'seqlen': 2048, 'seed': 0, 'nsamples': 128, 'sparsity_ratio': 0.5, 'sparsity_type': 'unstructured', 'dataset': 'c4', 'data_path': None, 'admm_beta1': 0.9, 'admm_beta2': 0.95, 'admm_num_train_samples': 4, 'admm_num_eval_samples': 4, 'admm_save_inputs': False, 'admm_save_path': None, 'save_model': False, 'admm_epochs': 1, 'admm_steps': 4096, 'admm_batch_size': 2, 'admm_gradient_accumulation_steps': 4, 'admm_gradient_checkpointing': False, 'admm_lr': 1e-05, 'admm_lr_scheduler': 'linear', 'admm_warmup_steps': 0, 'admm_weight_decay': 0.0, 'admm_precision': 'bf16', 'admm_projection_mode': 'identity', 'admm_projection_bias_correction': False, 'admm_lmda': 0.01, 'admm_init_lmda': 0.0, 'admm_final_lmda': 0.01, 'admm_init_lambda_from_inv_resid': False, 'admm_lmda_schedule_mode': 'constant', 'admm_interval': 32, 'admm_base_optimizer': 'adam', 'admm_dual_dtype': 'fp32', 'admm_split_dtype': 'fp32', 'admm_nonuniform_sparsity': False, 'admm_nonuniform_sparsity_config_file': None, 'admm_logging_steps': 1, 'admm_eval_steps': 1, 'data_ablation': False, 'eval_zero_shot': True, 'wandb': True, 'wandb_project': 'pruning_reasoning', '?': False, 'help': False, 'helpshort': False, 'helpfull': False, 'helpxml': False}

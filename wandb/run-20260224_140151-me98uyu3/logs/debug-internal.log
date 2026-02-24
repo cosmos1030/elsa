@@ -1,0 +1,15 @@
+{"time":"2026-02-24T14:01:51.809645188+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/doyoonkim/elsa/wandb/run-20260224_140151-me98uyu3/logs/debug-core.log"}
+{"time":"2026-02-24T14:01:52.230150557+09:00","level":"INFO","msg":"created new stream","id":"me98uyu3"}
+{"time":"2026-02-24T14:01:52.230170444+09:00","level":"INFO","msg":"stream: started","id":"me98uyu3"}
+{"time":"2026-02-24T14:01:52.23032241+09:00","level":"INFO","msg":"handler: started","stream_id":"me98uyu3"}
+{"time":"2026-02-24T14:01:52.230337399+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"me98uyu3"}
+{"time":"2026-02-24T14:01:52.230500806+09:00","level":"INFO","msg":"sender: started","stream_id":"me98uyu3"}
+{"time":"2026-02-24T14:01:52.737359133+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-02-24T14:36:06.618696888+09:00","level":"INFO","msg":"stream: closing","id":"me98uyu3"}
+{"time":"2026-02-24T14:36:06.618803047+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-02-24T14:36:06.619112426+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-02-24T14:36:07.782135597+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-02-24T14:36:08.18322142+09:00","level":"INFO","msg":"handler: closed","stream_id":"me98uyu3"}
+{"time":"2026-02-24T14:36:08.183251612+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"me98uyu3"}
+{"time":"2026-02-24T14:36:08.183383572+09:00","level":"INFO","msg":"sender: closed","stream_id":"me98uyu3"}
+{"time":"2026-02-24T14:36:08.185417733+09:00","level":"INFO","msg":"stream: closed","id":"me98uyu3"}

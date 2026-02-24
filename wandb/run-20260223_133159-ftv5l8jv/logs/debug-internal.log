@@ -1,0 +1,11 @@
+{"time":"2026-02-23T13:31:59.20013569+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/doyoonkim/elsa/wandb/run-20260223_133159-ftv5l8jv/logs/debug-core.log"}
+{"time":"2026-02-23T13:31:59.583941869+09:00","level":"INFO","msg":"created new stream","id":"ftv5l8jv"}
+{"time":"2026-02-23T13:31:59.583959771+09:00","level":"INFO","msg":"stream: started","id":"ftv5l8jv"}
+{"time":"2026-02-23T13:31:59.583967241+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"ftv5l8jv"}
+{"time":"2026-02-23T13:31:59.583980564+09:00","level":"INFO","msg":"handler: started","stream_id":"ftv5l8jv"}
+{"time":"2026-02-23T13:31:59.583983965+09:00","level":"INFO","msg":"sender: started","stream_id":"ftv5l8jv"}
+{"time":"2026-02-23T13:32:00.173825388+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2026-02-23T14:45:34.842669648+09:00","level":"INFO","msg":"stream: closing","id":"ftv5l8jv"}
+{"time":"2026-02-23T14:45:34.842722473+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2026-02-23T14:45:34.843141903+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2026-02-23T14:45:35.695761665+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
