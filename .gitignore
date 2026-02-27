@@ -1,0 +1,7 @@
+wandb/
+output/
+__pycache__/
+*.log
+*.pt
+*.ckpt
+*.bin
