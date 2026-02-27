@@ -1,10 +1,10 @@
 #!/bin/sh
 #SBATCH -J  elsa      # Job name
 #SBATCH -o output/%j.out      # Name of stdout output file (%j expands to %jobId)
-#SBATCH -t 3-00:00:00         # Run time (hh:mm:ss) 
+#SBATCH -t 1-00:00:00         # Run time (hh:mm:ss) 
 
 #### Select  GPU
-#SBATCH -p A100               # partiton
+#SBATCH -p RTX3090               # partiton
 #SBATCH   --nodes=1           # number of nodes
 #SBATCH   --ntasks=1           # number of tasks
 #SBATCH   --ntasks-per-node=1
@@ -21,25 +21,18 @@ echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
 echo "CUDA_VERSION=$CUDA_VERSION"
 
 ## Load modules
-module load anaconda3/2022.05
-source /opt/anaconda3/2022.05/etc/profile.d/conda.sh
+# module load anaconda3/2022.05
+# source /opt/anaconda3/2022.05/etc/profile.d/conda.sh
 
 echo "conda command executing"
 
 # Execute python file using conda run for robustness
 # Hyperparameters are set to match the original admm_lora_cifar100_fisher.py notebook
 
-# 타임아웃을 2시간(7200초)으로 연장
-export TORCH_NCCL_BLOCKING_WAIT=1
-export NCCL_ASYNC_ERROR_HANDLING=1
-export TORCH_DISTRIBUTED_DEBUG=DETAIL
-
-export TRITON_CACHE_DIR=/tmp/triton_cache_doyoon
-
 conda run -n elsa python -u main.py \
     --sparsity_ratio=0.5 \
     --sparsity_type="unstructured" \
-    --admm_steps=4096 \
+    --admm_steps=10 \
     --admm_batch_size=2 \
     --admm_gradient_accumulation_steps=4 \
     --admm_lr=1e-5 \
@@ -47,6 +40,7 @@ conda run -n elsa python -u main.py \
     --admm_interval=32 \
     --admm_nonuniform_sparsity=True \
     --admm_lmda=0.02 \
+    --do_distill=True \
     --eval_zero_shot=True \
     --seed=0 \
     --wandb=True \

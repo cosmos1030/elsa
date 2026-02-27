@@ -489,3 +489,59 @@ class FP8State:
             row = x.reshape(-1, R, C).abs().amax(dim=(0, 2))
             sat = float((row / (self.scale * self.vmax + self.eps)).clamp(max=1.0).mean().item())
         return sat
+
+
+
+import torch
+from typing import Optional
+
+def agg_loss(
+    loss_mat: torch.Tensor,
+    loss_mask: torch.Tensor,
+    loss_agg_mode: str,
+    dp_size: int = 1,
+    batch_num_tokens: Optional[int] = None,
+    global_batch_size: Optional[int] = None,
+    loss_scale_factor: Optional[int] = None,
+):
+    """
+    Aggregate the loss across global batch to ensure the loss is invariant to fsdp/megatron parallelism.
+    (verl_F 의존성을 제거하고 순수 PyTorch로 구현한 버전)
+    """
+    
+    # verl_F.masked_sum 을 완벽히 대체하는 내부 헬퍼 함수
+    def masked_sum(tensor, mask):
+        return torch.sum(tensor * mask)
+
+    if loss_agg_mode == "token-mean":
+        if batch_num_tokens is None:
+            # 0으로 나누는 오류를 방지하기 위해 clamp 적용
+            batch_num_tokens = loss_mask.sum().clamp(min=1.0)
+        loss = masked_sum(loss_mat, loss_mask) / batch_num_tokens * dp_size
+        
+    elif loss_agg_mode == "seq-mean-token-sum":
+        seq_losses = torch.sum(loss_mat * loss_mask, dim=-1)  # token-sum
+        seq_mask = (torch.sum(loss_mask, dim=-1) > 0).float()  # exclude fully masked sequences
+        if global_batch_size is None:
+            global_batch_size = seq_mask.sum().clamp(min=1.0)
+        loss = masked_sum(seq_losses, seq_mask) / global_batch_size * dp_size  # seq-mean
+        
+    elif loss_agg_mode == "seq-mean-token-mean":
+        seq_token_count = torch.sum(loss_mask, dim=-1)  # per-sequence token count
+        # ZeroDivision 방지
+        seq_losses = torch.sum(loss_mat * loss_mask, dim=-1) / seq_token_count.clamp(min=1e-8)  # token-mean
+        seq_mask = (seq_token_count > 0).float()  # exclude fully masked sequences
+        if global_batch_size is None:
+            global_batch_size = seq_mask.sum().clamp(min=1.0)
+        loss = masked_sum(seq_losses, seq_mask) / global_batch_size * dp_size  # seq-mean
+        
+    elif loss_agg_mode == "seq-mean-token-sum-norm":
+        seq_losses = torch.sum(loss_mat * loss_mask, dim=-1)
+        if loss_scale_factor is None:
+            loss_scale_factor = loss_mask.shape[-1]
+        loss = torch.sum(seq_losses) / loss_scale_factor
+        
+    else:
+        raise ValueError(f"Invalid loss_agg_mode: {loss_agg_mode}")
+
+    return loss

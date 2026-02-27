@@ -173,6 +173,7 @@ def get_loaders(
             - trainloader: A list of (input_tensor, target_tensor) tuples.
             - testenc: A TokenizerWrapper object containing test data.
     """
+    data_path = None
     local_rank = int(os.environ.get("LOCAL_RANK", 0))
     if local_rank == 0:
         logging.info("Using `get_loaders` (legacy compatibility mode).")

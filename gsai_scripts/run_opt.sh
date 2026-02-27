@@ -4,7 +4,7 @@
 #SBATCH -t 1-00:00:00         # Run time (hh:mm:ss) 
 
 #### Select  GPU
-#SBATCH -p RTX3090               # partiton
+#SBATCH -p A5000               # partiton
 #SBATCH   --nodes=1           # number of nodes
 #SBATCH   --ntasks=1           # number of tasks
 #SBATCH   --ntasks-per-node=1
@@ -35,11 +35,11 @@ conda run -n elsa python -u main.py \
     --admm_steps=4096 \
     --admm_batch_size=2 \
     --admm_gradient_accumulation_steps=4 \
-    --admm_lr=2e-4 \
+    --admm_lr=1e-5 \
     --admm_lmda=0.01 \
     --admm_interval=32 \
     --admm_nonuniform_sparsity=True \
-    --admm_save_inputs=True \
+    --admm_lmda=0.02 \
     --eval_zero_shot=True \
     --seed=0 \
     --wandb=True \

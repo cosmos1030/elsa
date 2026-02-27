@@ -5,3 +5,6 @@ __pycache__/
 *.pt
 *.ckpt
 *.bin
+admm*/
+dataset/
+distill_output/

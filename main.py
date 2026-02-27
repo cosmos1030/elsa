@@ -4,6 +4,7 @@ from transformers import AutoTokenizer
 from lib.prune import globalprune_admm
 from lib.eval import eval_ppl, eval_zero_shot
 from lib.utils import check_sparsity, get_llm
+from lib.on_policy_distill import run_on_policy_distillation
 from absl import logging, app, flags
 from importlib.metadata import version
 import os
@@ -88,6 +89,23 @@ def main(argv):
             model = get_llm(FLAGS.model, FLAGS.seqlen)
             model.load_state_dict(full_state)
         dist.destroy_process_group()
+
+    
+    if FLAGS.do_distill:
+        if local_rank == 0:
+            logging.info("--- Starting On-Policy Distillation Phase ---")
+        # 1. 여기서 티처 모델을 직접 로드합니다. (원본 Dense 모델)
+        # 메모리 효율을 위해 bfloat16을 권장하며, GPU 장치(device)로 이동시킵니다.
+        teacher_model = get_llm(FLAGS.model, FLAGS.seqlen)
+        teacher_model.to(torch.bfloat16).to(device)
+        teacher_model.eval()
+
+        # 2. 로드한 티처 모델을 인자로 명시적으로 넘겨줍니다.
+        run_on_policy_distillation(FLAGS, model, teacher_model, tokenizer, device)
+
+        # 3. 학습이 끝나면 티처를 메모리에서 해제하여 다음 단계(Eval 등)를 대비합니다.
+        del teacher_model
+        torch.cuda.empty_cache()
 
     if local_rank == 0:
 
@@ -179,6 +197,16 @@ if __name__ == '__main__':
     flags.DEFINE_enum('admm_split_dtype', 'fp32', ['fp32','bf16', 'float8_e4m3fn', 'float8_e5m2'], 'Dtype for ADMM split variable (fp32 or bf16).')
     flags.DEFINE_bool('admm_nonuniform_sparsity', False, 'Whether to use non-uniform sparsity based on sensitivity scores in ADMM.')
     flags.DEFINE_string('admm_nonuniform_sparsity_config_file', None, 'Path to non-uniform sparsity configuration file (JSON format).')
+
+    # On-policy distillation
+    flags.DEFINE_bool('do_distill', False, 'Whether to perform on-policy distillation after retraining.')
+    flags.DEFINE_float('distill_lr', 1e-5, 'Learning rate for distillation.')
+    flags.DEFINE_integer('distill_steps', 50, 'Number of distillation steps.')
+    flags.DEFINE_integer('distill_batch_size', 2, 'Batch size per device for distillation.')
+    flags.DEFINE_float('distill_temp', 1.0, 'Temperature for distillation.')
+    flags.DEFINE_float('distill_alpha', 1.0, 'Alpha for KL (1.0 for reverse KL).')
+    flags.DEFINE_integer('distill_topk', None, 'Top-k for distillation. If None, use full logits.')
+    flags.DEFINE_bool('distill_add_tail', True, 'Whether to add tail for top-k distillation.')
 
     # Logging & Evaluation
     flags.DEFINE_integer('admm_logging_steps', 1, 'Logging step interval for ADMM training.')
