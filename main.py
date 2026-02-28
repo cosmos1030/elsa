@@ -31,9 +31,15 @@ def main(argv):
         dist.init_process_group(backend='nccl')
 
     if FLAGS.wandb and local_rank == 0:
+        run_name = f"{FLAGS.model}_sparsity{FLAGS.sparsity_ratio}_admm_steps{FLAGS.admm_steps}_batch{FLAGS.admm_batch_size}_lr{FLAGS.admm_lr}"
+        
+        if FLAGS.do_distill:
+            kl_type = "ForwardKL" if FLAGS.distill_alpha == 0.0 else ("ReverseKL" if FLAGS.distill_alpha == 1.0 else f"Alpha{FLAGS.distill_alpha}")
+            run_name += f"_distill_{kl_type}_steps{FLAGS.distill_steps}"
+            
         wandb.init(
             project=FLAGS.wandb_project,
-            name=f"{FLAGS.model}_sparsity{FLAGS.sparsity_ratio}_admm_steps{FLAGS.admm_steps}_batch{FLAGS.admm_batch_size}_lr{FLAGS.admm_lr}"
+            name=run_name
         )
 
         if not dict(wandb.config):
